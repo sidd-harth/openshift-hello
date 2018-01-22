@@ -11,7 +11,7 @@ public class HelloApplication {
 	
 	@RequestMapping("/hello")
 	public String hello() {
-		return "Hello Openshift";
+		return "Hello Openshift!!";
 	}
 
 	public static void main(String[] args) {
