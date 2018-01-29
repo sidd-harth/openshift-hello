@@ -23,4 +23,12 @@ node {
 
         checkout scm
     }
+	
+	stage('maven build') {
+      
+        sh "mvn clean package -DskipTests" 
+    }
+	stage('Archive war') { 
+	    archive 'target/*.war' 
+	  } 
 }
