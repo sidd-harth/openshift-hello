@@ -11,7 +11,7 @@
 	  } 
 	  // Second Stage: Save the WAR file for later use 
 	  stage('Archive war') { 
-	    archive 'target/*.war' 
+	    archive 'target/*.jar' 
 	  } 
 } 
 
