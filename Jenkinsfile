@@ -1,6 +1,6 @@
 	// Run this node on a Maven Slave 
 	// Maven Slaves have JDK and Maven already installed 
-	node('maven') { 
+	node('mvn') { 
 	  // First stage: Build the War File 
 	  stage('Build war file') { 
 	    // Get Source Code from SCM (Git) as configured in the Jenkins Project 
