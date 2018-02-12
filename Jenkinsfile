@@ -1,4 +1,7 @@
-	// Run this node on a Maven Slave 
+def mvn_version = 'M3'
+withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] )
+// Run this node on a Maven Slave 
+
 	// Maven Slaves have JDK and Maven already installed 
 	node { 
 	  // First stage: Build the War File 
