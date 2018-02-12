@@ -1,5 +1,4 @@
-def mvn_version = 'M3'
-withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] )
+
 // Run this node on a Maven Slave 
 
 	// Maven Slaves have JDK and Maven already installed 
@@ -8,7 +7,8 @@ withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] )
 	  stage('Build war file') { 
 	    // Get Source Code from SCM (Git) as configured in the Jenkins Project 
 	    checkout scm 
-	 
+	 def mvn_version = 'M3'
+withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] )
 	    // Now invoke the Maven Build 
 	    sh "mvn clean package -DskipTests" 
 	  } 
