@@ -13,7 +13,7 @@ node('maven') {
     sh "mvn clean package -DskipTests
   }
   // Second Stage: Save the WAR file for later use
-  stage('Archive war') {
-    archive 'target/*.war'
+  stage('Archive jar') {
+    archive 'target/*.jar'
   }
 }
