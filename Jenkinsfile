@@ -10,7 +10,7 @@ pipeline {
                     checkout scm
 
                     // Now invoke the Maven Build
-                    sh "mvn clean package -DskipTests"
+                    bat "mvn clean package -DskipTests"
                 }
             }
         }
