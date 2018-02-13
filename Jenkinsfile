@@ -1,19 +1,27 @@
-#!groovy
+pipeline {
+    agent any
 
-// Run this node on a Maven Slave
-// Maven Slaves have JDK and Maven already installed
-node('maven') {
-  // First stage: Build the War File
-  stage('Build war file') {
+    stages {
+        stage ('Package Stage') {
 
-    // Get Source Code from SCM (Git) as configured in the Jenkins Project
-    checkout scm
+            steps {
+                withMaven(maven : 'apache-maven-3.3.9') {
+                   // Get Source Code from SCM (Git) as configured in the Jenkins Project
+                    checkout scm
 
-    // Now invoke the Maven Build
-    sh "mvn clean package -DskipTests"
-  }
-  // Second Stage: Save the WAR file for later use
-  stage('Archive jar') {
-    archive 'target/*.jar'
-  }
+                    // Now invoke the Maven Build
+                    sh "mvn clean package -DskipTests"
+                }
+            }
+        }
+
+        stage ('Archive jar') {
+
+            steps {
+                withMaven(maven : 'apache-maven-3.3.9') {
+                    archive 'target/*.jar'
+                }
+            }
+        }
+    }
 }
