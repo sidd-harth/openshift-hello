@@ -20,7 +20,7 @@ public class HelloApplication {
 	
 	@RequestMapping("/hello")
 	public String hello() {
-		return "Hello Openshift!!";
+		return "Hello Openshift from HCL!!!!";
 	}
 
 	public static void main(String[] args) {
