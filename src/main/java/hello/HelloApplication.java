@@ -65,11 +65,11 @@ public class HelloApplication {
         public String getemployeeById() throws JsonProcessingException {
 		
 
-		String browserService = "remoteURL";
+		//String browserService = "remoteURL";
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<String> browserResponse = null;
 		try {
-			browserResponse = restTemplate.exchange(browserService, HttpMethod.GET, getHeaders(), String.class);
+			browserResponse = restTemplate.exchange(remoteURL, HttpMethod.GET, getHeaders(), String.class);
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
