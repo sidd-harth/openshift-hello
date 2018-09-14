@@ -36,25 +36,22 @@ public class HelloApplication {
         private String remoteURL;
 	
 	@RequestMapping("/other-service")
-        public ResponseEntity<String> getCustomer() {
-        try {
-            /**
-             * Set baggage
-             */
-            ResponseEntity<String> responseEntity = restTemplate.getForEntity(remoteURL, String.class);
-            String response = responseEntity.getBody();
-            return ResponseEntity.ok(String.format(RESPONSE_STRING_FORMAT, response.trim()));
-        } catch (HttpStatusCodeException ex) {
-           // logger.warn("Exception trying to get the response from preference service.", ex);
-            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                    .body(String.format(RESPONSE_STRING_FORMAT,
-                            String.format("%d %s", ex.getRawStatusCode(), createHttpErrorResponseString(ex))));
-        } catch (RestClientException ex) {
-            ///logger.warn("Exception trying to get the response from preference service.", ex);
-            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                    .body(String.format(RESPONSE_STRING_FORMAT, ex.getMessage()));
-        }
-    }
+        public String getemployeeById() throws JsonProcessingException {
+		
+
+		String browserService = "remoteURL";
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<String> browserResponse = null;
+		try {
+			browserResponse = restTemplate.exchange(browserService, HttpMethod.GET, getHeaders(), String.class);
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+		System.out.println(browserResponse.getBody());
+
+		return ("[" + browserResponse.getBody() + "]");
+
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(HelloApplication.class, args);
