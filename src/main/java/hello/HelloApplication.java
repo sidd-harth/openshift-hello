@@ -36,7 +36,7 @@ public class HelloApplication {
         private String remoteURL;
 	
 	@RequestMapping("/other-service")
-        public ResponseEntity<String> getCustomer(@RequestHeader("User-Agent") String userAgent) {
+        public ResponseEntity<String> getCustomer() {
         try {
             /**
              * Set baggage
